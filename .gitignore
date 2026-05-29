@@ -1,0 +1,10 @@
+# Runtime and Cache Isolation
+.venv/
+__pycache__/
+*.pyc
+
+# Large Matrix & Data Protection
+data/
+*.csv
+*.parquet
+*.pkl
