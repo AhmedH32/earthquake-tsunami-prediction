@@ -7,6 +7,7 @@ from sklearn.metrics import (
     confusion_matrix,
     fbeta_score,
     make_scorer,
+    precision_recall_curve,
     roc_auc_score,
     roc_curve,
 )
@@ -113,3 +114,23 @@ def plot_combined_roc_curves(roc_data: dict, filename: str = "results/combined_r
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     plt.savefig(filename, dpi=300)
     plt.close()
+
+
+
+
+def find_optimal_f2_threshold(y_true: np.ndarray, y_probs: np.ndarray) -> tuple[float, float]:
+    precision, recall, thresholds = precision_recall_curve(y_true, y_probs)
+    
+    denominator = (4 * precision) + recall
+    f2_scores = np.where(denominator == 0, 0.0, (5 * precision * recall) / denominator)
+    
+    best_idx = np.argmax(f2_scores)
+    
+  
+    if best_idx >= len(thresholds):
+        best_idx = len(thresholds) - 1
+        
+    optimal_threshold = float(thresholds[best_idx])
+    best_f2 = float(f2_scores[best_idx])
+    
+    return optimal_threshold, best_f2

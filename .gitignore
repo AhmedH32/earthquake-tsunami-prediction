@@ -3,8 +3,6 @@
 __pycache__/
 *.pyc
 
-# Large Matrix & Data Protection
-data/
-*.csv
+# Large Matrix & Data Protection (Only ignore heavy serialized formats)
 *.parquet
 *.pkl

@@ -1,0 +1,5 @@
+Model,F2,AUC,TP,FN,FP,TN,Best_Params
+KNN,0.728813559,0.83844212,43,16,16,78,"{'n_neighbors': 3, 'weights': 'uniform'}"
+DecisionTree,0.889967638,0.884962135,55,4,18,76,"{'criterion': 'gini', 'max_depth': 4, 'min_samples_split': 5}"
+RandomForest,0.869565217,0.949693473,52,7,11,83,"{'max_depth': 10, 'min_samples_leaf': 4, 'n_estimators': 50}"
+RandomForest (Optimized),0.922330097,0.949693473,57,2,16,78,tau_optimized=0.3236
